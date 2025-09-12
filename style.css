@@ -1,0 +1,144 @@
+ body {
+     position: relative;
+     font-family: sans-serif;
+     padding: 20px;
+     background: #222;
+     color: white;
+     position: relative;
+     z-index: 10;
+ }
+
+ textarea {
+     width: 100%;
+     height: 150px;
+ }
+
+ .result,
+ textarea,
+ button,
+ label,
+ input {
+     margin-top: 20px;
+     padding: 15px;
+     background: #333;
+     border-radius: 6px;
+     color: #fff;
+     position: relative;
+     z-index: 10;
+ }
+
+ .header {
+     padding: 15px;
+     background: #333;
+     border-radius: 6px;
+     margin-bottom: 35px;
+     position: relative;
+     z-index: 10;
+     text-align: center;
+ }
+
+ .header h1 {
+     margin: 10px 0 0 0;
+ }
+
+ .fullscreen-textarea {
+     min-width: 100%;
+     max-width: 100%;
+     width: 100%;
+     font-size: 1rem;
+     box-sizing: border-box;
+ }
+
+ #btnUndi {
+     cursor: pointer;
+     background-color: #dc3545;
+     font-weight: bolder;
+ }
+
+ .winner {
+     font-weight: bold;
+     color: #fff;
+     background: #28a745;
+     padding: 10px;
+     margin: 5px 0;
+     border-radius: 4px;
+     animation: fadeIn 0.8s ease-in-out;
+ }
+
+ .result {
+     display: none;
+     max-height: 50vh;
+     overflow-y: auto;
+     border: 2px solid #28a745;
+ }
+
+ .result.show {
+     display: block;
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: scale(0.95);
+     }
+
+     to {
+         opacity: 1;
+         transform: scale(1);
+     }
+ }
+
+ canvas {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     pointer-events: none;
+     z-index: 1;
+ }
+
+ /* Fullscreen overlay */
+ #loadingOverlay {
+     position: fixed;
+     z-index: 9999;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.5);
+     /* semi transparan */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ #loadingOverlay.hide {
+     display: none;
+ }
+
+ #loadingOverlay.show {
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Spinner animasi berputar */
+ .spinner {
+     border: 8px solid #f3f3f3;
+     border-top: 8px solid #e60000;
+     /* warna Bank Jatim merah */
+     border-radius: 50%;
+     width: 60px;
+     height: 60px;
+     animation: spin 1s linear infinite;
+ }
+
+ @keyframes spin {
+     0% {
+         transform: rotate(0deg);
+     }
+
+     100% {
+         transform: rotate(360deg);
+     }
+ }

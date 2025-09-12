@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikasi Undian Bank CRUD</title>
+    <link rel="stylesheet" href="style.css?v=123">
+    <!-- <link rel="shortcut icon" href="http://www.bankjatim.co.id/files/favicon_jatim.png" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <div class="header">
+        <!-- <img src="https://www.bankjatim.co.id/themes/bjtm07/assets/img/logo.png" alt="Bank Jatim Logo"> -->
+        <img src="./logo.png" alt="Bank Jatim Logo" style="width: 25%; background-color: #fff;">
+        <h1>Undian Bank CRUD</h1>
+    </div>
+
+    <label>Daftar peserta (satu per baris):</label><br>
+    <textarea id="participants" placeholder="Contoh:\nAndi\nBudi\nCitra" class="fullscreen-textarea"></textarea>
+
+    <br><br>
+    <label>Jumlah pemenang per putaran:</label>
+    <input type="number" id="winnerCount" min="1" value="1">
+
+    <br><br>
+    <label>
+        <input type="checkbox" id="removeWinners" checked>
+        Hapus pemenang dari daftar peserta
+    </label>
+
+    <br><br>
+    <button onclick="draw()" id="btnUndi">Undi Sekarang</button>
+    <div class="result" id="result"></div>
+
+    <audio id="clapSound" preload="auto"></audio>
+
+    <div id="loadingOverlay" class="hide">
+        <div class="spinner"></div>
+        <p></p>
+    </div>
+
+    <script src="script.js?v=456"></script>
+</body>
+
+</html>
