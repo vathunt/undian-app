@@ -65,24 +65,44 @@ function draw() {
         }
 
         roundNumber++;
-        resultDiv.classList.add('show');
-        const winnerHtml = winners.map((w, k) => `<div class="winner">${k + 1}. ${w}</div>`).join('');
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = `
-            <h4>🎯 Pemenang Putaran ${roundNumber} (${winnerCount} peserta)</h4>
-                ${winnerHtml}
-            <hr>
+
+        // === Tambahkan popup modal di sini ===
+        const modal = document.createElement('div');
+        modal.classList.add('winner-modal');
+        modal.innerHTML = `
+            <div class="modal-overlay"></div>
+            <div class="modal-box">
+                <h2>🎉 Pemenang Putaran ${roundNumber}</h2>
+                <p>${winners.join('<br>')}</p>
+                <button id="closeModal">Tutup</button>
+            </div>
         `;
-        resultDiv.prepend(wrapper);
-        resultDiv.scrollTop = 0;
+        document.body.appendChild(modal);
+
         // Setelah selesai
         overlay.classList.remove('show');
         overlay.classList.add('hide');
-        drawButton.disabled = false;
 
         // mainkan suara
         clapSound.currentTime = 0;
         clapSound.play().catch(e => console.log("Audio gagal diputar:", e));
+
+        // Event untuk menutup modal
+        modal.querySelector('#closeModal').addEventListener('click', () => {
+            modal.remove();
+            drawButton.disabled = false;
+
+            resultDiv.classList.add('show');
+            const winnerHtml = winners.map((w, k) => `<div class="winner">${k + 1}. ${w}</div>`).join('');
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = `
+                <h4>🎯 Pemenang Putaran ${roundNumber} (${winnerCount} peserta)</h4>
+                    ${winnerHtml}
+                <hr>
+            `;
+            resultDiv.prepend(wrapper);
+            resultDiv.scrollTop = 0;
+        });
     }, 3000); // timeout singkat agar spinner terlihat
 
 
